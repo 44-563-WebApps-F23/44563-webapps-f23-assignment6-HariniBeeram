@@ -40,24 +40,24 @@
     }
 </script>
 <div id="image">
-    <img src="cities/NYC.jpg" id="cityimage" width="100px" height="100px" alt="New York City" onclick="selectImage()">
+    <img src="brazil.jpg" id="cityimage" width="100px" height="100px" alt="brazil" onclick="selectImage()">
 </div>
 <script>
 var useImage=1;
 function selectImage() {
     switch(useImage){
         case 1: 
-        document.getElementById('cityimage').src="cities/brazil.jpg";
+        document.getElementById('cityimage').src="egypt.jpg";
         useImage=2;
         break;
 
         case 2: 
-        document.getElementById('cityimage').src="cities/egypt.jpg";
+        document.getElementById('cityimage').src="brazil.jpg";
         useImage=3;
         break;
 
         case 3: 
-        document.getElementById('cityimage').src="cities/england.jpg";
+        document.getElementById('cityimage').src="england.jpg";
         useImage=1;
         break;
     }
