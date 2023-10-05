@@ -1,71 +1,84 @@
 <!DOCTYPE html>
 <html>
  <head>
-    <title>guess the author</title>
+    <link rel="stylesheet" href="colour.css">
+    <title>
+        Author input
+    </title>
  </head>
 <body>
 
 <h2>Author entry Beeram Harini</h2>
 
 <form>
-    <label for="secret value">The hidden author name</label>
-    <input type ="password" value="Dickens" name="secretvalue" id="secretvalue" >
-    <br><br>
-    <label for="input">Guess the author</label>
-    <input type ="text" id="input">
-    <br><br>
-    <button type="button" onclick="checkAuthor()">check the Guess</button>
-    <br><br>
-    <p>Good:<span id="goodcount">0</span></p>
-    <p>oops:<span id="oopscount">0</span></p>
-</form> 
+    <label for="secretValue">The hidden author name</label>
+    <input type ="password" id="secretValue" name="secretValue" value="Dickens"> <br>
+    <br> 
+    <label for="guessValue">Guess the author </label>
+    <input type ="text" id="guessValue" name="guessValue"> <br>
+    <br>
+    <button type="button" onclick="checkAuthor()" id="guess">Check the Guess</button>
+    <br>
+    <p>Good:<span id="goodCount">0</span></p>
+    <p>Oops:<span id="oopsCount">0</span></p>
 
-
+    <div>Incorrect guesses:<span id="incorrect"> 0</span></div><br><br>
 </form>
-<script>
-    var good=0;
-    var oops=0;
-    function checkAuthor(){
-        var original=document.getElementById("secretvalue").value
-        var guess=document.getElementById("input").value
-        if(original==guess){
-            good++;
-            alert("you got it right");
+
+
+<script> 
+ var good=0;
+ var oops=0;
+
+function checkAuthor(){
+   var secret = document.getElementById("secretValue").value;
+   var guess = document.getElementById("guessValue").value;
+    if(secret==guess){
+        good++;
+        alert("You got it right");
+    } else {
+        oops++;
+        if(oops>7){
+            document.getElementById("guess").disabled=true;
+           alert("Sorry,ran out of guesses "); 
+
         }else{
-            oops++;
-            alert("sorry");
+            alert("Sorry");
         }
-        document.getElementById("goodCount").innerHTML=good;
-        document.getElementById("oppsCount").innerHTML=oops;
+        
+        
     }
-</script>
-<div id="image">
-    <img src="brazil.jpg" id="cityimage" width="100px" height="100px" alt="brazil" onclick="selectImage()">
-</div>
-<script>
-var useImage=1;
-function selectImage() {
-    switch(useImage){
-        case 1: 
-        document.getElementById('cityimage').src="egypt.jpg";
-        useImage=2;
-        break;
 
-        case 2: 
-        document.getElementById('cityimage').src="brazil.jpg";
-        useImage=3;
-        break;
-
-        case 3: 
-        document.getElementById('cityimage').src="england.jpg";
-        useImage=1;
-        break;
-    }
+    document.getElementById("goodCount").innerHTML=good;
+    document.getElementById("oopsCount").innerHTML=oops;
+    document.getElementById("incorrect").innerHTML=oops;
 }
 </script>
 
-</body>
-</html>
+<div>
+    <img id="city" src="brazil.jpg" onclick="selectImage()" alt="Brazil" width="100 px" height ="100 px">
+</div>
+
+<script>
+    var useImage=1;
+
+    function selectImage(){
+        switch(useImage){
+            case 1: document.getElementById('city').src='egypt.jpg' ;
+            useImage=2;
+            break;
+            case 2: document.getElementById('city').src='england.jpg' ;
+            useImage=3;
+            break;
+            case 3: document.getElementById('city').src='brazil.jpg' ;
+            useImage=1;
+            break;
+            default:
+            break;
+
+        }
+    }
+</script>
 
 </body>
 </html>
